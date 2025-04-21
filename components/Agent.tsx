@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { vapi } from '@/lib/vapi.sdk';
+import { createFeedback } from '@/lib/actions/general.actions';
 import { interviewer } from '@/constants';
 
 enum CallStatus {
@@ -63,11 +64,11 @@ const Agent = ({ userName, userId, type, interviewId, questions }: AgentProps) =
         console.log('Generate Feedback here.');
 
 
-        //TODO: CREATE SERVER ACTION TO HANDLE FEEDBACK CREATION
-        const {success, id} = {
-            success: true,
-            id: 'feedback-id'
-        }
+        const {success, feedbackId:id} = await createFeedback({
+            interviewId: interviewId!,
+            userId: userId!,
+            transcript: messages
+        })
 
         if (success && id) {
             router.push(`/interview/${interviewId}/feedback`)
