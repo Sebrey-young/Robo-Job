@@ -1,6 +1,6 @@
 import { cert, getApps, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
-import { getFirestore as getFireStore } from "firebase-admin/firestore";
+import { getFirestore } from "firebase-admin/firestore";
 
 const initFirebaseAdmin = () => {
     const apps = getApps();
@@ -17,7 +17,7 @@ const initFirebaseAdmin = () => {
 
     return {
         auth: getAuth(),
-        db: getFireStore(),
+        db: getFirestore(),
     }
 }
 
