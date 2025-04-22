@@ -1,11 +1,10 @@
-import React from 'react'
 import dayjs from 'dayjs';
-import Image from 'next/image';
-import { getRandomInterviewCover } from '@/lib/utils';
-import { Button } from './ui/button';
-import Link from 'next/link';
-import DisplayTechIcons from './DisplayTechIcons';
-import { getFeedbackByInterviewId } from '@/lib/actions/general.actions';
+import Image from "next/image";
+import {getRandomInterviewCover} from "@/lib/utils";
+import {Button} from "@/components/ui/button";
+import Link from "next/link";
+import DisplayTechIcons from "@/components/DisplayTechIcons";
+import {getFeedbackByInterviewId} from "@/lib/actions/general.actions";
 
 const InterviewCard =  async ({ id, userId, role, type, techstack, createdAt }: InterviewCardProps) => {
     const feedback = userId && id 

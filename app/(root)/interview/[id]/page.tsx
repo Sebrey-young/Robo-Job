@@ -1,11 +1,10 @@
-import Agent from '@/components/Agent';
-import DisplayTechIcons from '@/components/DisplayTechIcons';
-import { getCurrentUser } from '@/lib/actions/auth.action';
-import { getInterviewById } from '@/lib/actions/general.actions';
-import { getRandomInterviewCover } from '@/lib/utils';
-import Image from 'next/image';
-import { redirect } from 'next/navigation';
-import React from 'react'
+import {getInterviewById} from "@/lib/actions/general.actions";
+import {redirect} from "next/navigation";
+import Image from "next/image";
+import {getRandomInterviewCover} from "@/lib/utils";
+import DisplayTechIcons from "@/components/DisplayTechIcons";
+import Agent from "@/components/Agent";
+import {getCurrentUser} from "@/lib/actions/auth.action";
 
 const page = async ({ params }: RouteParams) => {
     const { id } = await params;

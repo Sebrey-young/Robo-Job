@@ -5,16 +5,15 @@ import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 import { Button } from "@/components/ui/button"
-import { Form } from "@/components/ui/form"
-import Image from "next/image"
+import { Form} from "@/components/ui/form"
+import Image from "next/image";
 import Link from "next/link";
-import { toast } from "sonner"
-import FormField from "./FormField"
-import { useRouter } from "next/navigation"
-
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "@/firebase/client";
-import { signIn, signUp } from "@/lib/actions/auth.action"
+import {toast} from "sonner";
+import FormField from "@/components/FormField";
+import {useRouter} from "next/navigation";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from "@/firebase/client";
+import {signIn, signUp} from "@/lib/actions/auth.action";
 
 
 
@@ -106,7 +105,7 @@ const AuthForm = ({ type }: {type: FormType }) => {
               height={32} 
               width={38} />
 
-              <h2 className="text-primary-100">Robo-Job</h2>
+              <h2 className="text-primary-100">RoboJob</h2>
             </div>
           <h3>Master Job Interviews with AI</h3>
 

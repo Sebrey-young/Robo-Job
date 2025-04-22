@@ -1,12 +1,14 @@
-import { Button } from '@/components/ui/button';
-import { getCurrentUser } from '@/lib/actions/auth.action';
-import { getFeedbackByInterviewId, getInterviewById } from '@/lib/actions/general.actions';
-import dayjs from 'dayjs';
-import Image from 'next/image';
-import Link from 'next/link';
-import { redirect } from 'next/navigation';
-import React from 'react'
+import dayjs from "dayjs";
+import Link from "next/link";
+import Image from "next/image";
+import { redirect } from "next/navigation";
 
+import {
+    getFeedbackByInterviewId,
+    getInterviewById,
+} from "@/lib/actions/general.actions";
+import { Button } from "@/components/ui/button";
+import { getCurrentUser } from "@/lib/actions/auth.action";
 const page = async ({ params }: RouteParams) => {
   const { id } = await params;
   const user = await getCurrentUser();
