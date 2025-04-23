@@ -189,6 +189,10 @@
     @apply border-gradient p-0.5 rounded-2xl w-fit;
   }
 
+  .image-border {
+    @apply bg-transparent p-0 w-fit;
+  }
+
   .card {
     @apply dark-gradient rounded-2xl min-h-full;
   }

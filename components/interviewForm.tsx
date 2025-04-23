@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
@@ -16,18 +17,20 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
   const [interviewType, setInterviewType] = useState('');
   const [role, setRole] = useState('');
   const [level, setLevel] = useState('');
-  const [techstack, setTechstack] = useState('');
+  const [techstackInputs, setTechstackInputs] = useState<string[]>([""]);
   const [amount, setAmount] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const questionsCount = Math.max(0, parseInt(amount.trim(), 10) || 0);
 
+    const techstackStr = techstackInputs.filter(Boolean).join(', ');
+
     const payload = {
       type: interviewType,
       role,
       level,
-      techstack,
+      techstack: techstackStr,
       amount: questionsCount,
       userid: userId || ""
     };
@@ -52,79 +55,99 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
   };
 
   return (
-    <div className="card-interviewForm p-4">
-      <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="type" className="block text-sm font-medium text-gray-700">
-            Type of Interview (Behavioral, Technical, or Mixed)
-          </label>
-          <input
-            id="type"
-            type="text"
-            placeholder="Enter interview type"
-            value={interviewType}
-            onChange={(e) => setInterviewType(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-          />
+    <div className="flex gap-8 items-center py-14 px-10 lg:min-w-[600px]">
+      <div className="card-border lg:min-w-[600px]">
+        <div className="flex flex-col gap-6 card py-14 px-10">
+          <h3>Prepare Your Questions for Assesment.</h3>
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+            <div>
+              <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+                Type of Interview (Behavioral, Technical, or Mixed)
+              </label>
+              <input
+                id="type"
+                type="text"
+                placeholder="Enter interview type"
+                value={interviewType}
+                onChange={(e) => setInterviewType(e.target.value)}
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+                What role would you like to practice for?
+              </label>
+              <input
+                id="role"
+                type="text"
+                placeholder="Enter role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              />
+            </div>
+            <div>
+              <label htmlFor="level" className="block text-sm font-medium text-gray-700">
+                What Level of Experience do you want to practice for?
+              </label>
+              <input
+                id="level"
+                type="text"
+                placeholder="Enter level"
+                value={level}
+                onChange={(e) => setLevel(e.target.value)}
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              />
+            </div>
+            <label htmlFor="level" className="block text-sm font-medium text-gray-700">
+              What Techstack do you want to practice for?
+            </label>
+            <div className="flex flex-wrap items-center gap-2">
+              {techstackInputs.map((value, idx) => (
+                <input
+                  key={idx}
+                  type="text"
+                  placeholder="Techstack"
+                  value={value}
+                  onChange={e => {
+                    const newInputs = [...techstackInputs];
+                    newInputs[idx] = e.target.value;
+                    setTechstackInputs(newInputs);
+                  }}
+                  className="mt-1 block border border-gray-300 rounded-md p-2 w-32"
+                />
+              ))}
+              <Button type="button" size="sm" onClick={() => setTechstackInputs([...techstackInputs, ''])}>
+                Add
+              </Button>
+            </div>
+            <div>
+              <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
+                How many questions would you like?
+              </label>
+              <input
+                id="amount"
+                type="number"
+                min="1"
+                step="1"
+                placeholder="Enter number of questions"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                className="mt-1 block w-full border border-gray-300 rounded-md p-2"
+              />
+            </div>
+            <div className="mt-4">
+              <Button type="submit">Generate Interview</Button>
+            </div>
+          </form>
         </div>
-        <div>
-          <label htmlFor="role" className="block text-sm font-medium text-gray-700">
-            What role would you like to practice for?
-          </label>
-          <input
-            id="role"
-            type="text"
-            placeholder="Enter role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-          />
+      </div>
+      <div className="image-border">
+        <div className="flex flex-col items-center justify-center p-4">
+          <Image src="/logo.svg" alt="logo" height={32} width={38} />
+          <h2 className="text-primary-100">RoboJob</h2>
         </div>
-        <div>
-          <label htmlFor="level" className="block text-sm font-medium text-gray-700">
-            What Level of Experience do you want to practice for?
-          </label>
-          <input
-            id="level"
-            type="text"
-            placeholder="Enter level"
-            value={level}
-            onChange={(e) => setLevel(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-          />
-        </div>
-        <div>
-          <label htmlFor="techstack" className="block text-sm font-medium text-gray-700">
-            What Techstack would you like to use?
-          </label>
-          <input
-            id="techstack"
-            type="text"
-            placeholder="Enter techstack"
-            value={techstack}
-            onChange={(e) => setTechstack(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-          />
-        </div>
-        <div>
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
-            How many questions would you like?
-          </label>
-          <input
-            id="amount"
-            type="number"
-            min="1"
-            step="1"
-            placeholder="Enter number of questions"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-          />
-        </div>
-        <div className="mt-4">
-          <Button type="submit">Generate Interview</Button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

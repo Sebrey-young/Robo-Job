@@ -25,10 +25,13 @@ const Page = async () => {
                     <p className="text-lg">
                         Submit you qestions to start practicing and get instant feedback!
                     </p>
-                </div>
+
                 <Button asChild className="btn-primary max-sm:w-full">
                     <Link href="/interviewFormPage">Form an Interview</Link>
                 </Button>
+                </div>
+
+                <Image src="/robot.png" alt="robo-dude" width={400} height={400} className="max-sm:hidden" />
             </section>
 
             <section className="card-cta">
@@ -43,7 +46,6 @@ const Page = async () => {
                     </Button>
                 </div>
 
-                <Image src="/robot.png" alt="robo-dude" width={400} height={400} className="max-sm:hidden" />
             </section>
 
 
