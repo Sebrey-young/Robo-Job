@@ -58,10 +58,10 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
     <div className="flex gap-8 items-center py-14 px-10 lg:min-w-[600px]">
       <div className="card-border lg:min-w-[600px]">
         <div className="flex flex-col gap-6 card py-14 px-10">
-          <h3>Prepare Your Questions for Assesment.</h3>
+          <h3 className="text-purple-300 text-shadow-purple-600">Prepare Your Questions for Assesment.</h3>
           <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="type" className="block font-medium text-lg text-white">
                 Type of Interview (Behavioral, Technical, or Mixed)
               </label>
               <input
@@ -74,7 +74,7 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
               />
             </div>
             <div>
-              <label htmlFor="role" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="role" className="block font-medium text-lg text-white">
                 What role would you like to practice for?
               </label>
               <input
@@ -87,7 +87,7 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
               />
             </div>
             <div>
-              <label htmlFor="level" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="level" className="block font-medium text-lg text-white">
                 What Level of Experience do you want to practice for?
               </label>
               <input
@@ -99,7 +99,7 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               />
             </div>
-            <label htmlFor="level" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="level" className="block font-medium text-lg text-white">
               What Techstack do you want to practice for?
             </label>
             <div className="flex flex-wrap items-center gap-2">
@@ -122,7 +122,7 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
               </Button>
             </div>
             <div>
-              <label htmlFor="amount" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="amount" className="block font-medium text-lg text-white">
                 How many questions would you like?
               </label>
               <input
@@ -144,8 +144,7 @@ const InterviewForm = ({ userName, userId, type: formType }: InterviewFormProps)
       </div>
       <div className="image-border">
         <div className="flex flex-col items-center justify-center p-4">
-          <Image src="/logo.svg" alt="logo" height={32} width={38} />
-          <h2 className="text-primary-100">RoboJob</h2>
+          <Image src="/form-bot.png" alt="suit-bot" height={400} width={400} />
         </div>
       </div>
     </div>
