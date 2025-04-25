@@ -105,7 +105,7 @@ const AuthForm = ({ type }: {type: FormType }) => {
               height={32} 
               width={38} />
 
-              <h2 className="text-primary-100">RoboJob</h2>
+              <h2 className="text-primary-200">O.R.B.I.T</h2>
             </div>
           <h3>Master Job Interviews with AI</h3>
 
